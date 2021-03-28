@@ -3,6 +3,8 @@ package com.msd.portal.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.msd.portal.domain.Course;
+
 /**
  * 
  * @author sudheer mende
@@ -10,6 +12,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface CourseRepository extends CrudRepository<com.msd.portal.domain.Course, Long>{
+public interface CourseRepository extends CrudRepository<Course, Long>{
 
 }

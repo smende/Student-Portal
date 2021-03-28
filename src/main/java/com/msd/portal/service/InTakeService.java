@@ -15,6 +15,7 @@ public interface InTakeService {
 
 	public List<InTake> getAll();
 	public List<InTake> getAllActiveInTakes();
+	public List<InTake> getAllInActiveInTakes();
 	public Optional<InTake> getById(long id);
 	public InTake addNew(InTake inTake);
 	public InTake updateById(long id,InTake inTake);

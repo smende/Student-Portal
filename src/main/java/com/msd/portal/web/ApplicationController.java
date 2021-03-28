@@ -17,6 +17,12 @@ import com.msd.portal.domain.Application;
 import com.msd.portal.enumtypes.ApplicationStatus;
 import com.msd.portal.service.ApplicationService;
 
+/**
+ * 
+ * @author sudheer mende
+ *
+ */
+
 @RestController
 @RequestMapping("/api/application")
 public class ApplicationController {

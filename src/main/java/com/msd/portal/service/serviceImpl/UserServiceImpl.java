@@ -72,4 +72,9 @@ public class UserServiceImpl implements UserService{
 		long localUserId = Long.parseLong(env.getProperty("app.localUserId"));				
 		return getUserById(localUserId).get();
 	}
+	
+	@Override
+	public List<User> getUsersByCreatedByUserName(String userName) {
+		return userRepository.findAllUsersByCreatedBy(userName);
+	}
 }

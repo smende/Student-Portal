@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msd.portal.domain.Role;
 import com.msd.portal.service.RoleService;
 
+/**
+ * 
+ * @author sudheer mende
+ *
+ */
+
 @RestController
 @RequestMapping("/api/role")
 public class RoleController {

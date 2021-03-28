@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msd.portal.domain.Subject;
 import com.msd.portal.service.SubjectService;
 
+/**
+ * 
+ * @author sudheer mende
+ *
+ */
+
 @RestController
 @RequestMapping("/api/subject")
 public class SubjectController {

@@ -30,7 +30,9 @@
   .toolbar img {
     margin: 0 16px;
   }
-
+.mainRouterContent{
+  margin-top:60px;
+}
 </style>
 
 <div class="toolbar" role="banner">
@@ -41,9 +43,9 @@
   />
   <span>Student Portal</span>
     <div class="spacer"></div>
-    <a routerLink="/test">Click test</a>
 </div>
-
-
-
-<router-outlet></router-outlet>
+<div class="mainRouterContent">
+  <h1>Hello</h1>
+  <a routerLink="/test">Click test</a>
+  <router-outlet></router-outlet>
+</div>

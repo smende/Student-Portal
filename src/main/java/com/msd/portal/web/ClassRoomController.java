@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msd.portal.domain.ClassRoom;
 import com.msd.portal.service.ClassRoomService;
 
+/**
+ * 
+ * @author sudheer mende
+ *
+ */
+
 @RestController
 @RequestMapping("/api/classroom")
 public class ClassRoomController {

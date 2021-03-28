@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msd.portal.domain.UserRole;
 import com.msd.portal.service.UserRoleService;
 
+/**
+ * 
+ * @author sudheer mende
+ *
+ */
+
 @RestController
 @RequestMapping("/api/userrole")
 public class UserRoleController {

@@ -6,12 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.boot.context.properties.ConstructorBinding;
-
 import com.msd.portal.domain.generic.GenericDomain;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -23,8 +20,6 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-@ConstructorBinding
-@NoArgsConstructor
 public class UserRole extends GenericDomain{
 
 	@Id

@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msd.portal.domain.PreRequisiteRelation;
 import com.msd.portal.service.PreRequisiteRelationService;
 
+/**
+ * 
+ * @author sudheer mende
+ *
+ */
+
 @RestController
 @RequestMapping("/api/prerequisites")
 public class PreRequisiteRelationController {

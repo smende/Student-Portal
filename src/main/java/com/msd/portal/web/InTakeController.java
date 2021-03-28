@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msd.portal.domain.InTake;
 import com.msd.portal.service.InTakeService;
 
+/**
+ * 
+ * @author sudheer mende
+ *
+ */
+
 @RestController
 @RequestMapping("/api/intake")
 public class InTakeController {
@@ -31,6 +37,11 @@ public class InTakeController {
 	@GetMapping("/activeintakes")
 	public List<InTake> getAllActiveInTakes(){
 		return this.inTakeService.getAllActiveInTakes();
+	}
+	
+	@GetMapping("/inactiveintakes")
+	public List<InTake> getAllInActiveInTakes(){
+		return this.inTakeService.getAllInActiveInTakes();
 	}
 	
 	@GetMapping("/{id}")

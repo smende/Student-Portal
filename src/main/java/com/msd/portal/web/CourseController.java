@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msd.portal.domain.Course;
 import com.msd.portal.service.CourseService;
 
+/**
+ * 
+ * @author sudheer mende
+ *
+ */
 
 @RestController
 @RequestMapping("/api/course")

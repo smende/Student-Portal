@@ -9,14 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.msd</groupId>
-	<artifactId>com.msd.portal</artifactId>
+	<artifactId>Student_Portal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>com.msd.portal</name>
 	<description>School portal project</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-	<dependencies>
+	<dependencies>	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -56,6 +56,10 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
 
 		<!-- Swagger related -->		
 		<dependency>

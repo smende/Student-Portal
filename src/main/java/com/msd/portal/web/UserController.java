@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msd.portal.domain.User;
 import com.msd.portal.service.UserService;
 
+/**
+ * 
+ * @author sudheer mende
+ *
+ */
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -61,6 +67,11 @@ public class UserController {
 	@GetMapping("/current")
 	public User getCurrentUser() {
 		return userService.getCurrentUser();
+	}
+	
+	@GetMapping("/createdby/{createdByUserName}")
+	public List<User> getCurrentUser(@PathVariable String createdByUserName) {
+		return userService.getUsersByCreatedByUserName(createdByUserName);
 	}
 	
 }

@@ -15,6 +15,6 @@ import com.msd.portal.domain.InTake;
 
 @Repository
 public interface InTakeRepository extends CrudRepository<InTake, Long>{
-
-	public List<InTake> findAllByActiveTrue();
+	List<InTake> findAllByActiveTrue();
+	List<InTake> findAllByActiveFalse();
 }

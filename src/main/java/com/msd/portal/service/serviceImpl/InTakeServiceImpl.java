@@ -29,9 +29,14 @@ public class InTakeServiceImpl implements InTakeService{
 
 	@Override
 	public List<InTake> getAllActiveInTakes() {
-		return this.inTakeRepository.findAllByActiveTrue();
+		return (List<InTake>) this.inTakeRepository.findAllByActiveTrue();
 	}
 
+	@Override
+	public List<InTake> getAllInActiveInTakes() {
+		return (List<InTake>) this.inTakeRepository.findAllByActiveFalse();
+	}
+	
 	@Override
 	public Optional<InTake> getById(long id) {
 		return this.inTakeRepository.findById(id);
