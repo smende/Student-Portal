@@ -77,4 +77,11 @@ public class UserServiceImpl implements UserService{
 	public List<User> getUsersByCreatedByUserName(String userName) {
 		return userRepository.findAllUsersByCreatedBy(userName);
 	}
+	
+	@Override
+		public Optional<User> getUserByUserName(String userName) {
+			return null;
+		}
+	
+
 }
