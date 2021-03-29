@@ -39,6 +39,12 @@ public class RoleController {
 		return this.roleService.addRole(role);
 	}
 	
+	@PostMapping("/bulksave")
+	public List<Role> addBulkRoles(@RequestBody List<Role> roles) throws Exception{
+		return this.roleService.bulkSaveRoles(roles);
+	}
+	
+	
 	@GetMapping("/{id}")
 	public Optional<Role> getById(@PathVariable int id){
 		return this.roleService.getRoleById(id);

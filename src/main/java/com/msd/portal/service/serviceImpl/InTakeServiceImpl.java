@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.msd.portal.domain.InTake;
@@ -24,7 +25,7 @@ public class InTakeServiceImpl implements InTakeService{
 	
 	@Override
 	public List<InTake> getAll() {
-		return (List<InTake>) this.inTakeRepository.findAll();
+		return (List<InTake>) this.inTakeRepository.findAll(Sort.by("startDate"));
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.msd.portal.domain.Role;
 import com.msd.portal.repositories.RoleRepository;
@@ -52,6 +53,24 @@ public class RoleServiceImpl implements RoleService{
 			return this.roleRepository.save(role);
 		}
 		
+	}
+	
+	@Override
+	@Transactional
+	public List<Role> bulkSaveRoles(List<Role> roles) throws Exception {
+		if(roles.size()>0) {
+			
+			for(Role role:roles) {
+				
+					if(role.getName() == null) {
+						throw(new Exception());
+					}
+				
+				this.addRole(role);
+			}			
+			return roles;
+		}
+		return null;
 	}
 
 }

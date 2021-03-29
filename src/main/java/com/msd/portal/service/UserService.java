@@ -22,4 +22,5 @@ public interface UserService {
 	public void deleteUserById (long id);
 	public User updateUser(long id, User user);
 	public User getCurrentUser();
+	public Optional<User> getUserByUserName(String userName);
 }
