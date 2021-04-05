@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.msd.portal.domain.Course;
+import com.msd.portal.domain.Role;
 import com.msd.portal.repositories.CourseRepository;
 import com.msd.portal.service.CourseService;
 
@@ -30,6 +31,23 @@ public class CourseServiceImpl implements CourseService{
 	@Override
 	public Course addNew(Course course) {
 		return this.courseRepository.save(course);
+	}
+	
+	@Override
+	public List<Course> bulkSave(List<Course> courses) throws Exception {
+		if(courses.size()>0) {
+			
+			for(Course course:courses) {
+				
+					if(course.getName() == null) {
+						throw(new Exception());
+					}
+				
+				this.addNew(course);
+			}			
+			return courses;
+		}
+		return null;
 	}
 
 	@Override

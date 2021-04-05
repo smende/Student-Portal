@@ -29,6 +29,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
+	public List<Application> getAllByUserId(long userId) {
+		return applicationRepo.findAllByUserId(userId);
+	}
+	
+	@Override
 	public List<Application> getAllByStatus(ApplicationStatus status) {
 		return this.applicationRepo.findAllByStatus(status);
 	}

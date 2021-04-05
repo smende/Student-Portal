@@ -83,5 +83,20 @@ public class UserServiceImpl implements UserService{
 			return null;
 		}
 	
-
+	private String createUniqueUserName(User user) throws Exception {
+		
+//		if(user == null || user.getFirstName() == null || user.getLastName() == null)
+//		{
+//			throw(new Exception());
+//		}
+//		
+//		String userName = user.getLastName()+
+//		
+//		if() {
+//			
+//		}
+		
+		return null;
+	}
+	
 }

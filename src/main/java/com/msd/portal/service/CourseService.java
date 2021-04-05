@@ -15,6 +15,7 @@ public interface CourseService {
 	
 	public List<Course> getAll();
 	public Course addNew(Course course);
+	public List<Course> bulkSave(List<Course> courses) throws Exception;
 	public Optional<Course> getById(long id);
 	public void deleteById (long id);
 	public Course updateById(long id,Course course);

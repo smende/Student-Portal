@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.themeBlueClr{
+    color: #1976d2;
+}
+.gray{
+    color:gray;
+}
+.link{
+    color: #0a69c7;
+    text-decoration: none;
+    cursor: pointer;
+}
+.lightBold{
+    font-weight: 500px;
+}
+.bold{
+    font-weight: bold;
+}
+.center{
+    margin: 0 auto !important;
+}
+.centerAlign{
+    text-align: center !important;
+}
+.font12{
+    font-size: 12px !important;
+}
+.font14{
+    font-size: 14px !important;
+}
+.font16{
+    font-size: 16px !important;
+}
+.font18{
+    font-size: 18px !important;
+}
+.boxShadow{
+    box-shadow: 0px 15px 20px -12px grey !important;
+}
+.boxShadow:hover{
+    box-shadow: 0px 25px 20px -12px grey !important;
+}
+.grow{
+    transition: all .15s ease-in-out !important;
+}
+.grow:hover {
+    transform: scale(1.01) !important;
+}
+.mrl5{
+    margin-left: 5px !important;
+}
+.success{
+    color: #10a754;
+}
+.error{
+    color: #b50000;
+}

@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Developers",
+        "details": "Super User"
+    },
+    {
+        "name": "Head of the school",
+        "details": "Principal"
+    },
+    {
+        "name": "Head of the Department",
+        "details": "HOD"
+    },
+    {
+        "name": "Teacher",
+        "details": "Faculty"
+    },
+    {
+        "name": "Administratin team",
+        "details": "Admin Staff"
+    },
+    {
+        "name": "Active academic student",
+        "details": "Student"
+    },
+    {
+        "name": "waiting for approval",
+        "details": "Applicant"
+    }
+]

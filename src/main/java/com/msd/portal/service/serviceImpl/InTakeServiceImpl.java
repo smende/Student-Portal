@@ -25,7 +25,7 @@ public class InTakeServiceImpl implements InTakeService{
 	
 	@Override
 	public List<InTake> getAll() {
-		return (List<InTake>) this.inTakeRepository.findAll(Sort.by("startDate"));
+		return (List<InTake>) this.inTakeRepository.findAll(Sort.by("startDate").descending());
 	}
 
 	@Override

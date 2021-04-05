@@ -1,0 +1,39 @@
+[
+    {
+    "name":"Class 1",
+    "details":"1st Class"
+    },
+    {
+    "name":"Class 2",
+    "details":"2nd Class"
+    },
+    {
+    "name":"Class 3",
+    "details":"3rd Class"
+    },
+    {
+    "name":"Class 4",
+    "details":"4th Class"
+    },{
+    "name":"Class 5",
+    "details":"5th Class"
+    },{
+    "name":"Class 6",
+    "details":"6th Class"
+    },{
+    "name":"Class 7",
+    "details":"7th Class"
+    },
+    {
+    "name":"Class 8",
+    "details":"8th Class"
+    },
+    {
+    "name":"Class 9",
+    "details":"9th Class"
+    },
+    {
+    "name":"Class 10",
+    "details":"10th Class"
+    }
+]

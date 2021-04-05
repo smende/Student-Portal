@@ -1,22 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponentComponent } from './test-component/test-component.component';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { BasicImportModule } from './sharedModules/basic-import-module/basic-import.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TestComponentComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
-    FormsModule,
-    AppRoutingModule
+    BasicImportModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

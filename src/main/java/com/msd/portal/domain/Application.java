@@ -33,15 +33,20 @@ public class Application extends GenericDomain{
 	@JoinColumn(name ="user_id", referencedColumnName = "id")
 	private User user;
 
-	@ManyToOne
-	@NotNull
-	@JoinColumn(name ="intake_id", referencedColumnName = "id")
-	private InTake inTake;
+//	@ManyToOne
+//	@NotNull
+//	@JoinColumn(name ="intake_id", referencedColumnName = "id")
+//	private InTake inTake;
+//	
+//	@ManyToOne
+//	@NotNull
+//	@JoinColumn(name ="course_id", referencedColumnName = "id")
+//	private Course course;
 	
 	@ManyToOne
 	@NotNull
-	@JoinColumn(name ="course_id", referencedColumnName = "id")
-	private Course course;
+	@JoinColumn(name ="courseByInTake_id", referencedColumnName = "id")
+	private CourseByInTake courseByInTake;
 	
 	private String notes;
 	

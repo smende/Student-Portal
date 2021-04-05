@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { TestComponentComponent } from './test-component/test-component.component';
+import { RouterModule } from '@angular/router';
+import { CustomRoutes } from './models/custom-data';
 
-const routes: Routes = [
+const routes: CustomRoutes = [
   {
-    path:"test",
-    component:TestComponentComponent
+    path:"admissions",
+    loadChildren: ()=> import("./featureModules/admissions/admissions.module").then(mod => mod.AdmissionsModule),
+    data:{title:"Apply",standAlone:false}
   }
 ];
 

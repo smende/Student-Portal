@@ -1,0 +1,44 @@
+[
+    {
+        "name": "2019 Academic Year",
+        "details": "This intake starts in 2019 April and ends in 2020 March",
+        "startDate": "2019-04-01",
+        "endDate": "2020-03-01"
+    },
+    {
+        "name": "2020 Academic Year",
+        "details": "This intake starts in 2020 April and ends in 2021 March",
+        "startDate": "2020-04-01",
+        "endDate": "2021-03-01"
+    },
+    {
+        "name": "2021 Academic Year",
+        "details": "This intake starts in 2021 April and ends in 2022 March",
+        "startDate": "2021-04-01",
+        "endDate": "2022-03-01"
+    },
+    {
+        "name": "2022 Academic Year",
+        "details": "This intake starts in 2022 April and ends in 2023 March",
+        "startDate": "2022-04-01",
+        "endDate": "2023-03-01"
+    },
+    {
+        "name": "2023 Academic Year",
+        "details": "This intake starts in 2023 April and ends in 2024 March",
+        "startDate": "2023-04-01",
+        "endDate": "2024-03-01"
+    },
+    {
+        "name": "2024 Academic Year",
+        "details": "This intake starts in 2024 April and ends in 2025 March",
+        "startDate": "2024-04-01",
+        "endDate": "2025-03-01"
+    },
+    {
+        "name": "2025 Academic Year",
+        "details": "This intake starts in 2025 April and ends in 2026 March",
+        "startDate": "2025-04-01",
+        "endDate": "2026-03-01"
+    }
+]

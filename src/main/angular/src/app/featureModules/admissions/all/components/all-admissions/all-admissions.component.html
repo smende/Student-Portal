@@ -1,0 +1,33 @@
+<div class="card-body centerAlign">
+    <h2>Admissions</h2>
+</div>
+<div class="card inTakes boxShadow grow">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let eachRecord of records">
+            <mat-expansion-panel-header class="ph">
+              <mat-panel-title>
+                <div class="row">
+                  <label class="link col-lg-12 col-md-12 col-sm-12"><span class="bold font14">{{eachRecord?.inTake?.name}}</span></label>
+                  <span class="gray font12 col-lg-6 col-md-6 col-sm-12"><b>Start Date: </b>{{eachRecord?.inTake?.startDate}}</span>
+                  <span class="gray font12 col-lg-6 col-md-6 col-sm-12"><b>End Date: </b>{{eachRecord?.inTake?.endDate}}</span>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
+            <div>             
+              
+            <mat-selection-list #selectionCourseByInTake [multiple]="false" (selectionChange)="onSelect($event,selectionCourseByInTake.selectedOptions.selected[0]?.value)">
+                <mat-list-option *ngFor="let courseByInTake of eachRecord.courseByInTakeList" [value]="courseByInTake" class="eachItem" [disabled]="admissionApplicationsMap.has(courseByInTake?.id)">                 
+                    <label class="link"><span class="bold font14">{{courseByInTake?.course?.name}}</span> 
+                      <span *ngIf="admissionApplicationsMap.has(courseByInTake?.id);else applyBlock" class="font12 gray mrl5">(Applied)</span>
+                      <ng-template #applyBlock ><span class="font12 gray mrl5">(Click to apply)</span></ng-template>
+                    </label>
+                  <mat-divider></mat-divider>
+                </mat-list-option>
+            </mat-selection-list>
+
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+</div>
