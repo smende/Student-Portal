@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/apis/api.service';
-import { User } from 'src/app/models/user';
+import { CurrentUser } from 'src/app/models/user-role';
 import { CurrentUserService } from 'src/app/services/currentUser/current-user.service';
 import { Router } from '@angular/router';
 import { CourseByInTake } from 'src/app/models/course-by-in-take';
 import { AdmissionApplication } from 'src/app/models/admission-application';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-apply-admission',
@@ -14,15 +13,17 @@ import { delay } from 'rxjs/operators';
 })
 export class ApplyAdmissionComponent implements OnInit {
 
-  currentUser : User;
+  currentUser : CurrentUser;
   selectedCourseByInTake : CourseByInTake;
   isLoading = false;
   isSubmitted = false;
+  canApply = false;
   isError = false;
+  admissionApplicationsMap : Map<number,AdmissionApplication> = new Map();
 
-  constructor(private apiService:ApiService,
-              private currentUserService:CurrentUserService,
-              private router : Router) {
+  constructor(private router : Router,
+              private apiService:ApiService,
+              private currentUserService:CurrentUserService) {
 
                 let currentNavigation = this.router.getCurrentNavigation();
                 this.selectedCourseByInTake = currentNavigation.extras.state["item"];
@@ -31,11 +32,12 @@ export class ApplyAdmissionComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.currentUserService.getCurrentUser_async().subscribe(user =>{
-          if(user == null)
-            return;
-
-            this.currentUser = user;
+      this.currentUserService.getCurrentUser_async().subscribe(currentUser =>{
+        if(currentUser == null)
+           return;
+              
+        this.currentUser = currentUser;
+            this.chech_canApply();
       })
   }
 
@@ -45,11 +47,11 @@ export class ApplyAdmissionComponent implements OnInit {
     this.isSubmitted = false;
     
     let newApplication : AdmissionApplication = {
-      user : {id: this.currentUser.id},
+      user : {id: this.currentUser.user.id},
       courseByInTake : { id : this.selectedCourseByInTake.id }   
     };
 
-    this.apiService.postApplicationForAdmission(newApplication).pipe(delay(3000)).subscribe(resp =>{
+    this.apiService.postApplicationForAdmission(newApplication).subscribe(resp =>{
       this.isLoading = false;
 
       if(resp.ok){
@@ -61,6 +63,12 @@ export class ApplyAdmissionComponent implements OnInit {
     },err =>{
       this.isLoading = false;
       this.isError = true;
+    })
+  }
+
+  chech_canApply(){
+    this.apiService.canUserApplyForAdmissionToCourseByInTakeRecord(this.currentUser.user.id,this.selectedCourseByInTake.id).subscribe(resp =>{
+        this.canApply = resp.body as boolean;
     })
   }
 

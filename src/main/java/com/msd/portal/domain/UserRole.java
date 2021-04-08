@@ -34,5 +34,5 @@ public class UserRole extends GenericDomain{
 	@JoinColumn(name="role_id",referencedColumnName = "id")
 	private Role role;
 
-	
+	private boolean isCurrentRole;
 }

@@ -15,15 +15,15 @@
         <h2>User details</h2>
       </div>
       <mat-list role="list" class=card-body>
-        <mat-list-item role="listitem"><strong>First Name</strong><span>: {{currentUser?.firstName}}</span></mat-list-item>
-        <mat-list-item role="listitem"><strong>Last Name</strong><span>: {{currentUser?.lastName}}</span></mat-list-item>
-        <mat-list-item role="listitem"><strong>Email</strong><span>: {{currentUser?.email}}</span></mat-list-item>
-        <mat-list-item role="listitem"><strong>Phone</strong><span>: {{currentUser?.cell}}</span></mat-list-item>
+        <mat-list-item role="listitem"><strong>First Name</strong><span>: {{currentUser?.user?.firstName}}</span></mat-list-item>
+        <mat-list-item role="listitem"><strong>Last Name</strong><span>: {{currentUser?.user?.lastName}}</span></mat-list-item>
+        <mat-list-item role="listitem"><strong>Email</strong><span>: {{currentUser?.user?.email}}</span></mat-list-item>
+        <mat-list-item role="listitem"><strong>Phone</strong><span>: {{currentUser?.user?.cell}}</span></mat-list-item>
       </mat-list>  
     </div>
 
   </mat-card-content>
-  <mat-card-actions class="centerAlign">
+  <mat-card-actions class="centerAlign"  *ngIf="canApply;else alreadyAppliedBlock">
     <label *ngIf="!isLoading && isSubmitted && isError" class="error lightBold">Something went wrong, try again!  <span class="fas fa-exclamation"></span> <br></label>
     <button *ngIf="isError == true || !isSubmitted" [disabled]="isLoading" mat-raised-button color="primary" (click)="continueToApply()">
       <span *ngIf="!isLoading">Apply</span>
@@ -31,4 +31,7 @@
      </button>
     <label *ngIf="!isLoading && isSubmitted && !isError" class="success lightBold">Submitted <span class="fas fa-check"></span></label>
   </mat-card-actions>
+  <ng-template #alreadyAppliedBlock>
+    <label>You have already applied to this course in this intake.</label>
+  </ng-template>
 </mat-card>

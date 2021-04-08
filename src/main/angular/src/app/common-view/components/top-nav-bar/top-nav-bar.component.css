@@ -1,0 +1,26 @@
+.spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    box-shadow: 0px 2px 14px 0px #797979;
+    padding:0px !important;
+  }
+  .toolbar,.topNavBarDummy{
+      height: 50px;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+  .buttonRow {
+    display: table-cell;
+  }

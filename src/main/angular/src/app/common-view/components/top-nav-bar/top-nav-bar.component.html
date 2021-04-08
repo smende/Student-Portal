@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark toolbar">
+
+  <button type="button" mat-button (click)="toggleSideNav('over')" class="font18 mrl10 d-lg-none d-xl-none">
+    <i class="fas fa-bars"></i>
+  </button>
+  
+  <button type="button" mat-button (click)="toggleSideNav('side')" class="font18 mrl10 d-none d-sm-none d-md-none d-lg-block d-xl-block">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <a class="navbar-brand font16" routerLink="admissions/all">
+    <img
+    width="40"
+    alt="School Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+  />
+  {{schoolName}}
+</a>
+
+<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button> -->
+
+  <div class="collapse navbar-collapse" id="navbarText" *ngIf="currentUser && currentUser != null">
+    <div class="spacer"></div>  
+    <section>
+        <div class="buttonRow">
+          <button mat-button *ngFor="let opt of (menu[currentUser?.role?.name] == undefined ? menu['ROLE_Applicant']: menu[currentUser?.role?.name])" [routerLink]="opt?.url">{{opt?.label}}</button>
+        </div>
+    </section>
+  </div>
+  <span class="mrr10"></span>
+
+  <button mat-button [matMenuTriggerFor]="beforeMenu" class="pullRight mrla"><span class="fas fa-user"></span> {{currentUser?.user?.firstName}}
+    <i class="fas fa-caret-down"></i>
+  </button>
+
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item *ngFor="let opt of (menu[currentUser?.role?.name] == undefined ? menu['ROLE_Applicant']: menu[currentUser?.role?.name])" 
+            [routerLink]="opt?.url">{{opt?.label}}</button>
+    <button mat-menu-item >Log out</button>
+
+  </mat-menu>
+
+</nav>
+
+<div class="topNavBarDummy"></div>

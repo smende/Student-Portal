@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BasicImportModule } from 'src/app/sharedModules/basic-import-module/basic-import.module';
 import { CustomRoutes } from 'src/app/models/custom-data';
 import { AllAdmissionsComponent } from './components/all-admissions/all-admissions.component';
-import { ApplyAdmissionService } from '../apply-admission/services/apply-admission.service';
+import { AllAdmissionsService } from './services/all-admissions.service';
 
 let routes:CustomRoutes = [
   {
@@ -16,7 +16,7 @@ let routes:CustomRoutes = [
 
 @NgModule({
   declarations: [AllAdmissionsComponent],
-  providers:[ApplyAdmissionService],
+  providers:[AllAdmissionsService],
   imports: [
     CommonModule,
     BasicImportModule,

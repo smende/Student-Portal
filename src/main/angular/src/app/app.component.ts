@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { CustomData } from './models/custom-data';
-import { User } from './models/user';
+import { CurrentUser } from './models/user-role';
 import { CurrentUserService } from './services/currentUser/current-user.service';
 import { UtilService } from './services/util/util.service';
 
@@ -14,18 +14,20 @@ import { UtilService } from './services/util/util.service';
 export class AppComponent{
   title = 'MSD'
   schoolName = "Portal";
-  currentUser:User;
+  currentUser:CurrentUser;
+  sideNavMode = "side";
+  list = ["Admissions","My Applicatins"];
   
   constructor(private currentUserService:CurrentUserService,
               private activetdRoute:ActivatedRoute,
               private utilService:UtilService,
               private titleService:Title){
                 
-    this.currentUserService.getCurrentUser_async().subscribe(user =>{
-        if(user == null)
+    this.currentUserService.getCurrentUser_async().subscribe(currentUser =>{
+        if(currentUser == null)
         return;
               
-        this.currentUser = user;
+        this.currentUser = currentUser;
     })
   }
 

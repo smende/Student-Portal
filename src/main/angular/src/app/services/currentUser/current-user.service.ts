@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/models/user';
+import { CurrentUser } from 'src/app/models/user-role';
 import { ApiService } from '../apis/api.service';
 
 @Injectable({
@@ -10,8 +11,8 @@ import { ApiService } from '../apis/api.service';
 export class CurrentUserService {
 
   private apiVersion :string;
-  private currentUser : User = null;
-  private currentUseSubject = new BehaviorSubject<User>(null);
+  private currentUser : CurrentUser = null;
+  private currentUseSubject = new BehaviorSubject<CurrentUser>(null);
   private isCurrentUserLoading = false;
   
   constructor(private http:HttpClient,
@@ -20,7 +21,7 @@ export class CurrentUserService {
   }
 
   private getCurrentUserApi(){
-    return this.http.get(this.apiVersion+"/user/current",{observe:"response"});
+    return this.http.get(this.apiVersion+"/userrole/current",{observe:"response"});
   }
 
   private fetchCurrentUser(){
@@ -29,7 +30,7 @@ export class CurrentUserService {
     this.getCurrentUserApi().subscribe(resp =>{
       this.isCurrentUserLoading = false;
         if(resp.ok && resp.body != null){
-            this.currentUser = resp.body as User;
+            this.currentUser = resp.body as CurrentUser;
             this.currentUseSubject.next(this.currentUser)
         }else{
             this.currentUser = {isError:true};

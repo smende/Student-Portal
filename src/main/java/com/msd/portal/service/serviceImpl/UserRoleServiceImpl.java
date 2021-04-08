@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import com.msd.portal.domain.UserRole;
 import com.msd.portal.repositories.UserRoleRepository;
 import com.msd.portal.service.UserRoleService;
+
+import lombok.extern.log4j.Log4j2;
 
 /**
  * 
@@ -18,8 +21,12 @@ import com.msd.portal.service.UserRoleService;
  */
 
 @Service
+@Log4j2
 public class UserRoleServiceImpl implements UserRoleService{
-
+	
+	@Autowired
+	private Environment env;
+	
 	@Autowired
 	private UserRoleRepository userRoleRepository;
 
@@ -59,8 +66,21 @@ public class UserRoleServiceImpl implements UserRoleService{
 		this.userRoleRepository.deleteById(id);
 	}
 	
-	
+	@Override
+	public UserRole getCurrentUserRole() {		
+		long localUserId = Long.parseLong(env.getProperty("app.localUserId"));	
+		List<UserRole> listOfUserRolesWithCurrentRoleIsTrue = userRoleRepository.findByUserIdAndIsCurrentRoleTrue(localUserId);
+		int size = listOfUserRolesWithCurrentRoleIsTrue.size();
+		
+		if(size == 0)
+			return null;
+		else
+		{
+			if(size >1)
+				log.error("Current userID: "+localUserId+" has multiple user roles with flag currentRole as true");
+			
+			return listOfUserRolesWithCurrentRoleIsTrue.get(0);
+		}
+	}
 
-	
-	
 }

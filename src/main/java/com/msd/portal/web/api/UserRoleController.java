@@ -59,4 +59,9 @@ public class UserRoleController {
 		return this.userRoleService.getAllRolesByUserID(userId);
 	}
 	
+	@GetMapping("/current")
+	public UserRole getCurrentUserRole(){
+		return userRoleService.getCurrentUserRole();
+	}
+	
 }

@@ -7,6 +7,4 @@ export interface User extends GenericFields{
     lastName ?: string;
     email ?: string;
     cell ?: string;
-
-    isError ?: boolean;
 }

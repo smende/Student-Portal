@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CustomRoutes } from 'src/app/models/custom-data';
 import { CheckIdGuard } from '../../guards/checkId/check-id.guard';
+import { AdmissionsMainService } from './services/admissions-main.service';
 
 const routes: CustomRoutes = [
   {
@@ -10,15 +11,20 @@ const routes: CustomRoutes = [
     [
       {
         path:"all",
-        loadChildren: () => import("./all/all.module").then(mod => mod.AllModule),
-        data:{module:"All"}
+        loadChildren: () => import("./subModules/all/all.module").then(mod => mod.AllModule),
+        data:{module:"admissionsAll"}
       },
       {
         path:"apply",
-        loadChildren: () => import("./apply-admission/apply-admission.module").then(mod => mod.ApplyAdmissionModule),
+        loadChildren: () => import("./subModules/apply-admission/apply-admission.module").then(mod => mod.ApplyAdmissionModule),
         canLoad:[CheckIdGuard],
         canActivateChild:[CheckIdGuard],
-        data:{module:"Apply"}
+        data:{module:"admissionApply"}
+      },
+      {
+        path:"applications",
+        loadChildren: () => import("./subModules/applications/applications.module").then(mod => mod.ApplicationsModule),
+        data:{module:"admissionApplications"}
       },
       {
         path:"",
@@ -30,6 +36,7 @@ const routes: CustomRoutes = [
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
+  providers:[AdmissionsMainService],
   exports: [RouterModule]
 })
 export class AdmissionsRoutingModule { }

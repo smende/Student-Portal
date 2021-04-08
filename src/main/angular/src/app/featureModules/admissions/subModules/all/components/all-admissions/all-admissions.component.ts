@@ -3,9 +3,10 @@ import { MatSelectionListChange } from '@angular/material/list';
 import { Router } from '@angular/router';
 import { AdmissionApplication } from 'src/app/models/admission-application';
 import { CourseByInTake, CourseByInTakeListByInTake } from 'src/app/models/course-by-in-take';
-import { User } from 'src/app/models/user';
+import { CurrentUser } from 'src/app/models/user-role';
 import { CurrentUserService } from 'src/app/services/currentUser/current-user.service';
 import { AllAdmissionsService } from '../../services/all-admissions.service';
+import { AdmissionsMainService } from '../../../../services/admissions-main.service';
 
 @Component({
   selector: 'app-all-admissions',
@@ -22,23 +23,24 @@ export class AllAdmissionsComponent implements OnInit {
    * 
    */
 
-  currentUser : User;
+  currentUser : CurrentUser;
   isLoading = false;
 
   records : CourseByInTakeListByInTake[] =[];
   admissionApplicationsMap : Map<number, AdmissionApplication[]> = new Map();
 
-  constructor(private currentUserService:CurrentUserService,
+  constructor(private router:Router,
+              private currentUserService:CurrentUserService,
               private allAdmissionsService:AllAdmissionsService,
-              private router:Router) { }
+              private admissionsMainService:AdmissionsMainService) { }
 
   ngOnInit(): void {
 
-      this.currentUserService.getCurrentUser_async().subscribe(user =>{
-          if(user == null)
-            return;
-
-            this.currentUser = user;
+      this.currentUserService.getCurrentUser_async().subscribe(currentUser =>{
+        if(currentUser == null)
+           return;
+              
+        this.currentUser = currentUser;
             this.loadAllInTakes();
             this.loadAdmissionApplications();
       })
@@ -70,11 +72,9 @@ export class AllAdmissionsComponent implements OnInit {
   }
 
   loadAdmissionApplications(){
-      this.allAdmissionsService.getAdmissionsApplicationsMap(this.currentUser.id).subscribe(resp =>{
+      this.admissionsMainService.getAdmissionsApplicationsMap(this.currentUser.user.id).subscribe(resp =>{
         if(resp.ok && resp.body != null)
             this.admissionApplicationsMap = resp.body as any;
-
-            console.log(this.admissionApplicationsMap);
       })
   }
 

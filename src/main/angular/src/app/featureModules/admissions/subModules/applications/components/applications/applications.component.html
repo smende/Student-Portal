@@ -1,0 +1,32 @@
+<div class="card-body centerAlign">
+    <h2>{{title}}</h2>
+</div>
+
+
+<div class="card center wfc mat-elevation-z8">
+  <app-loader [isLoading]="isLoading"></app-loader>
+    <div >
+        <table mat-table [dataSource]="dataSource" class="tbl">
+
+            <ng-container *ngFor="let column of displayedColumns"  [matColumnDef]="column">
+              <th mat-header-cell *matHeaderCellDef> {{keyValues[column]?.label}} </th>
+              <td mat-cell *matCellDef="let element" [ngSwitch]="column"> 
+    
+                <span *ngSwitchCase="'course'">{{element?.courseByInTake?.course?.name}}</span>
+                <span *ngSwitchCase="'inTake'">{{element?.courseByInTake?.inTake?.name}}</span>
+                <span *ngSwitchCase="'status'" class="error" [ngClass]="{'themeBlueClr':(element?.status =='SUBMITTED'),'success':(element?.status == 'APPROVED')}">{{element[column]}}</span>
+                <div *ngSwitchCase="'actions'">
+                  <button mat-raised-button color="warn" *ngIf="element?.status !='WITHDREW' " (click)="withdraw(element?.id)">Withdraw</button>
+                </div>
+                <span *ngSwitchDefault>{{element[column]}}</span>
+              </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator  [pageSizeOptions]="sizeList"></mat-paginator>          
+    </div>
+  
+  </div>
+  

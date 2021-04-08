@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BasicImportModule } from './sharedModules/basic-import-module/basic-import.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonViewModule } from './common-view/common-view.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     CommonModule,
+    CommonViewModule,
     BasicImportModule,
     AppRoutingModule,
     BrowserAnimationsModule

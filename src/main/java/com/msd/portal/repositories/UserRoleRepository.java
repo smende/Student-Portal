@@ -1,6 +1,7 @@
 package com.msd.portal.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 
@@ -17,5 +18,7 @@ import com.msd.portal.domain.UserRole;
 public interface UserRoleRepository extends CrudRepository<UserRole, Long>{
 	
 	public List<UserRole> findAllUserRolesByUserId(long userId);
+	
+	public List<UserRole> findByUserIdAndIsCurrentRoleTrue(long userId);
 	
 }
