@@ -15,18 +15,20 @@ export class AppComponent{
   title = 'MSD'
   schoolName = "Portal";
   currentUser:CurrentUser;
+  isUserLoading = true;
   sideNavMode = "side";
-  list = ["Admissions","My Applicatins"];
-  
+
   constructor(private currentUserService:CurrentUserService,
               private activetdRoute:ActivatedRoute,
               private utilService:UtilService,
               private titleService:Title){
-                
-    this.currentUserService.getCurrentUser_async().subscribe(currentUser =>{
+
+    this.isUserLoading = true;          
+    this.currentUserService.getCurrentUser_async("appcomp").subscribe(currentUser =>{
         if(currentUser == null)
         return;
-              
+
+        this.isUserLoading = false;
         this.currentUser = currentUser;
     })
   }

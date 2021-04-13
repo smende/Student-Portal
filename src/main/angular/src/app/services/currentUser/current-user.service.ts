@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { User } from 'src/app/models/user';
 import { CurrentUser } from 'src/app/models/user-role';
 import { ApiService } from '../apis/api.service';
 
@@ -42,8 +41,8 @@ export class CurrentUserService {
     })
   }
 
-  public getCurrentUser_async(){
-    if((this.currentUser == null &&  this.isCurrentUserLoading == false) || (this.currentUser != null && this.currentUser.isError == true))
+  public getCurrentUser_async(from?:string){
+    if((this.currentUser == null &&  this.isCurrentUserLoading == false))
     {
       this.fetchCurrentUser();
     }
@@ -51,5 +50,17 @@ export class CurrentUserService {
     return this.currentUseSubject;
   }
 
+  public isCurrentRoleAdminReleatedRole(){
+    if(this.isCurrentUserLoading || this.currentUser == null || this.currentUser.isError)
+      return false;
+    else{
+        let roleName = this.currentUser.role.name;
+      if(["ROLE_Super_User","ROLE_Principal","ROLE_Management"].includes(roleName))
+           return true;
+        else 
+           return false;
+    }
+
+  }
 
 }

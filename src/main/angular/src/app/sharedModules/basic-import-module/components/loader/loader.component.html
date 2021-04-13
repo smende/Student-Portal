@@ -1,3 +1,7 @@
-<div class="loading-shade" *ngIf="isLoading">
-    <mat-spinner [diameter]="diameter" [strokeWidth]="strokeWidth"></mat-spinner>
+<div *ngIf="isLoading" class="dg">
+    <div class="loading-shade">
+        <mat-spinner [diameter]="diameter" [strokeWidth]="strokeWidth"></mat-spinner>
+        <span class="text" *ngIf="label != null">{{label}}...</span>
+    </div>
+   
 </div>

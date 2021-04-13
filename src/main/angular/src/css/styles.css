@@ -12,7 +12,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #b50000;
 }
 .lightGrayBg{
-    background-color: #d2d9df;
+    background-color: #e0e0e0;
 }
 .body{
    overflow: hidden; 
@@ -49,6 +49,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .font18{
     font-size: 18px !important;
 }
+.font20{
+    font-size: 20px !important;
+}
 .boxShadow{
     box-shadow: 0px 15px 20px -12px grey !important;
 }
@@ -76,9 +79,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mrr10{
     margin-right: 10px !important;
 }
+.mrt100{
+    margin-top: 100px !important;
+}
 .wfc{
     width: fit-content !important;
 }
 .pullRight{
     float: right;
+}
+.dg{
+    display: grid !important;
+}
+.mat-tooltip {
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    background-color: black;
 }

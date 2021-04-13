@@ -31,8 +31,15 @@ export class ApiService {
     return this.http.post(API_VERSION+"/application",admissionApplication,{observe:"response"});
   }
 
-  getAdmissionApplicationsByUserId(userId:number){
-    return this.http.get(API_VERSION+"/application/byuserid/"+userId,{observe:"response"})
+  getAllAdmissionApplications(userId?:number){
+    if(userId == undefined || userId == null)
+        return this.http.get(API_VERSION+"/application",{observe:"response"})
+    else
+      return this.http.get(API_VERSION+"/application/byuserid/"+userId,{observe:"response"})
+  }
+
+  getAllAdmissinApplicationsByUserIdWhichAreNotAllowedToReApply(userId:number){
+    return this.http.get(API_VERSION+"/application/can_not_reapply_by_userid/"+userId,{observe:"response"})
   }
   
   canUserApplyForAdmissionToCourseByInTakeRecord(userId : number, courseByInTakeId : number){

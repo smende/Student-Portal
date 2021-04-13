@@ -1,0 +1,6 @@
+.mat-list-base .mat-list-item {
+    color: rgb(224 224 224);
+}
+.mat-list-option.active{
+    color: white !important;
+}

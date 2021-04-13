@@ -18,7 +18,9 @@ public interface ApplicationService {
 	public List<Application> getAll();
 	public List<Application> getAllByUserId(long userId);
 	public List<Application> getAllByStatus(ApplicationStatus status);
-	public Application getApplicationsByUserIdAndCourseByInTakeId(long userId,long courseByInTakeId);
+	public List<Application> getAllByUserIdAndStatus(long userId,String status);
+	public List<Application> getApplicationsByUserIdWhichAreNotAllowedToReApply(long userId);	
+	public List<Application> getApplicationsByUserIdAndCourseByInTakeId(long userId,long courseByInTakeId);
 	public boolean canUserApplyToCourseByInTakeRecord(long userId,long courseByInTakeId);
 	public Optional<Application> getById(long id);
 	public Application addNew(Application application);

@@ -21,5 +21,12 @@ public interface ApplicationRepository extends CrudRepository<Application, Long>
 	
 	public List<Application> findAllByUserId(long userId);
 	
-	public Application findByUserIdAndCourseByInTakeId(long userId, long courseByInTakeId); 
+	public List<Application> findByUserIdAndCourseByInTakeId(long userId, long courseByInTakeId); 
+	
+	public List<Application> findByUserIdAndCourseByInTakeIdAndStatusIn(long userId, long courseByInTakeId, List<ApplicationStatus> statusList); 
+	
+	public List<Application> findAllByUserIdAndStatus(long userId, ApplicationStatus status);
+	
+	public List<Application> findAllByUserIdAndStatusIn(long userId, List<ApplicationStatus> statusList);
+
 }

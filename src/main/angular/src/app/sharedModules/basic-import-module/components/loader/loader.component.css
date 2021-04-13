@@ -10,3 +10,7 @@
     align-items: center;
     justify-content: center;
   }
+.text{
+  position: absolute;
+  margin-top: 200px;
+}

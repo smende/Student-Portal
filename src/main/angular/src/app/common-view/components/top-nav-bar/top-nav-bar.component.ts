@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { MenuItem } from 'src/app/models/menu-item';
 import { CurrentUser } from '../../../models/user-role';
 import { CurrentUserService } from '../../../services/currentUser/current-user.service';
+import { CommonViewService } from '../../services/common-view.service';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -17,32 +19,24 @@ export class TopNavBarComponent implements OnInit {
   currentUser : CurrentUser;
   isLoading = false;
   
-  applicantMenu =[
-    {label:"Admissions",url:"admissions/all"},
-    {label:"My Applications",url:"admissions/applications"}    
-  ]
-  superUserMenu =[
-    {label:"Admissions",url:"admissions/all"},
-    {label:"Applications",url:"admissions/applications"}    
-  ]
+  menu : MenuItem[] = [];
 
+  constructor(private currentUserService:CurrentUserService,
+              private commonViewService : CommonViewService) {
 
-  menu = {
-    'ROLE_Applicant' : this.applicantMenu,
-    'ROLE_Super_User': this.superUserMenu,    
-  }
-
-
-  constructor(private currentUserService:CurrentUserService) { }
+              }
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.currentUserService.getCurrentUser_async().subscribe(currentUser =>{
+    this.currentUserService.getCurrentUser_async("topNav").subscribe(currentUser =>{
       if(currentUser == null)
           return;
             
       this.currentUser = currentUser;
+      if(!currentUser.isError){
+        this.menu = this.commonViewService.getMenuOptionsByUserRole(currentUser.role.name);
         this.isLoading = false;
+      }
     })
 
   }

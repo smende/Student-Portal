@@ -1,17 +1,18 @@
 <app-top-nav-bar [drawer]="drawer" (modeChange)="sideNavMode = $event" [schoolName]="schoolName"></app-top-nav-bar>
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav lightGrayBg" [mode]="sideNavMode">
-    <mat-selection-list #shoes [multiple]="false">
-      <mat-list-option *ngFor="let item of list" [value]="item">
-        {{item}}
-      </mat-list-option>
-    </mat-selection-list>
-    
+<mat-drawer-container autosize>
+  <mat-drawer #drawer class="sidenav" [mode]="sideNavMode">
+    <app-side-nav-bar [drawer]="drawer" [mode]="sideNavMode" *ngIf="!isUserLoading && !currentUser?.isError"></app-side-nav-bar>
   </mat-drawer>
 
-  <div class="example-sidenav-content">
-    <div class="mainRouterContent">       
-      <router-outlet (activate)="onRouteChange()"></router-outlet>
+  <div class="sidenav-content mainRouterContent">
+    <app-loader [isLoading]="isUserLoading" [label]="'Loading user details'"></app-loader>
+    <div class="centerAlign mrt100" *ngIf="!isUserLoading && currentUser?.isError == true">
+        <h1 class="error">Unable to load user details</h1>
+        <h4>Check your internet connection <span class="fas fa-wifi"></span></h4> 
+    </div>
+
+    <div class="routerOutlet" *ngIf="!isUserLoading && !currentUser?.isError">       
+      <router-outlet (activate)="onRouteChange()" ></router-outlet>
     </div>
   </div>
 

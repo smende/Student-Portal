@@ -32,7 +32,7 @@ export class ApplyAdmissionComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.currentUserService.getCurrentUser_async().subscribe(currentUser =>{
+      this.currentUserService.getCurrentUser_async("applyAdmissions").subscribe(currentUser =>{
         if(currentUser == null)
            return;
               

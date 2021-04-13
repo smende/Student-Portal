@@ -10,13 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.msd.portal.domain.Application;
-import com.msd.portal.domain.CourseByInTake;
-import com.msd.portal.domain.User;
 import com.msd.portal.enumtypes.ApplicationStatus;
 import com.msd.portal.repositories.ApplicationRepository;
 import com.msd.portal.service.ApplicationService;
-import com.msd.portal.service.CourseByInTakeService;
 import com.msd.portal.service.UserService;
+import com.msd.portal.util.CommonUtil;
 
 /**
  * 
@@ -49,17 +47,40 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 	
 	@Override
-	public Application getApplicationsByUserIdAndCourseByInTakeId(long userId, long courseByInTakeId) {		
+	public List<Application> getAllByUserIdAndStatus(long userId, String status) {
+		ApplicationStatus appStatus = null;
+		try {
+			appStatus = ApplicationStatus.valueOf(status.toUpperCase());			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+
+		return applicationRepo.findAllByUserIdAndStatus(userId, appStatus);
+	}
+	
+	@Override
+	public List<Application> getApplicationsByUserIdWhichAreNotAllowedToReApply(long userId) {
+		List<ApplicationStatus> listOfStatus = CommonUtil.getAdmissionApplicationPositiveStatusList();
+
+		return applicationRepo.findAllByUserIdAndStatusIn(userId, listOfStatus);
+	}
+	
+	@Override
+	public List<Application> getApplicationsByUserIdAndCourseByInTakeId(long userId, long courseByInTakeId) {		
 		return applicationRepo.findByUserIdAndCourseByInTakeId(userId, courseByInTakeId);
 	}
+	
 	
 	@Override
 	public boolean canUserApplyToCourseByInTakeRecord(long userId, long courseByInTakeId) {
 		
+		List<ApplicationStatus> listOfStatus = CommonUtil.getAdmissionApplicationPositiveStatusList();
+					
 		try {
-			Application admissionApplication = applicationRepo.findByUserIdAndCourseByInTakeId(userId, courseByInTakeId);
+			List<Application> admissionApplications = applicationRepo.findByUserIdAndCourseByInTakeIdAndStatusIn(userId, courseByInTakeId,listOfStatus);
 			
-			if(admissionApplication == null || admissionApplication.getStatus().equals(ApplicationStatus.REJECTED))		
+			if(admissionApplications == null || admissionApplications.size() == 0)
 				return true;
 			else
 				return false;

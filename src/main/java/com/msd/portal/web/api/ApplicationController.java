@@ -19,6 +19,8 @@ import com.msd.portal.domain.Application;
 import com.msd.portal.enumtypes.ApplicationStatus;
 import com.msd.portal.service.ApplicationService;
 
+import io.swagger.annotations.ApiOperation;
+
 /**
  * 
  * @author sudheer mende
@@ -48,12 +50,32 @@ public class ApplicationController {
 	}
 	
 	@GetMapping("/bystatus/{status}")
-	public List<Application> getById(@PathVariable ApplicationStatus status){
+	public List<Application> getAllByStatus(@PathVariable ApplicationStatus status){
 		return this.applicationService.getAllByStatus(status);
 	}
 	
+	@GetMapping("/by_userid_and_status")
+	public List<Application> getAllByUserIdAndStatus(@RequestParam long userid,@RequestParam(defaultValue = "SUBMITTED") String status){
+		
+		if(status.trim().length() == 0)
+			status = ApplicationStatus.SUBMITTED.toString();
+		
+		return this.applicationService.getAllByUserIdAndStatus(userid, status.trim());
+	}
+	
+	
+	@ApiOperation(
+			value = "Get All Applications which are not alllowed to re apply by userId",
+			notes = "Get All applications with status only either SUBMITTED or UNDER_VERIFICATION or DECISION_PENDING or APPROVED",
+			response = Application.class,
+			responseContainer = "List")
+	@GetMapping("/can_not_reapply_by_userid/{userid}")
+	public List<Application> getApplicationsByUserIdWhichAreNotAllowedToReApply(@PathVariable long userid){
+		return applicationService.getApplicationsByUserIdWhichAreNotAllowedToReApply(userid);
+	}
+	
 	@GetMapping("/by_userid_and_coursebyintakeid")
-	public Application getByUserIdAndCourseByInTakeId(@RequestParam long userid,@RequestParam long coursebyintakeid){
+	public List<Application> getByUserIdAndCourseByInTakeId(@RequestParam long userid,@RequestParam long coursebyintakeid){
 		return this.applicationService.getApplicationsByUserIdAndCourseByInTakeId(userid,coursebyintakeid);
 	}
 	

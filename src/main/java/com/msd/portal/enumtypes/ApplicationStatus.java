@@ -7,10 +7,10 @@ package com.msd.portal.enumtypes;
  */
 
 public enum ApplicationStatus {
-	SUBMITTED, // 1 submitted by applicant 
-	UNDER_VERIFICATION, // 2 received application and status changed
-	DECISION_PENDING, // 3 Decision Pending
-	APPROVED,// 4 Approved 
-	REJECTED,// 4 Rejected
-	WITHDREW // Applicant can cancel
+	SUBMITTED, // submitted by applicant 
+	UNDER_VERIFICATION, // received application and status changed
+	DECISION_PENDING, // Decision Pending
+	APPROVED,// Approved 
+	DENIED,// Rejected
+	WITHDREW // Applicant cancelled application
 }

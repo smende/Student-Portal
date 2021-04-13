@@ -9,7 +9,7 @@ export class AdmissionsMainService {
   constructor(private apiService:ApiService) { }
 
   getAdmissionsApplicationsMap(userId:number){
-    return this.apiService.getAdmissionApplicationsByUserId(userId).pipe(map(resp =>{
+    return this.apiService.getAllAdmissinApplicationsByUserIdWhichAreNotAllowedToReApply(userId).pipe(map(resp =>{
   
       if(resp.ok && resp.body != null){
           let map = new Map<number,AdmissionApplication>();

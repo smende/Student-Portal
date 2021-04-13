@@ -14,9 +14,20 @@
     
                 <span *ngSwitchCase="'course'">{{element?.courseByInTake?.course?.name}}</span>
                 <span *ngSwitchCase="'inTake'">{{element?.courseByInTake?.inTake?.name}}</span>
+                <span *ngSwitchCase="'applicantName'" class="link" matTooltip="Click to view user profile" ><span class="fas fa-user font20 mrr5"></span>{{element?.user?.firstName +' '+element?.user?.lastName}} ({{element?.user?.id}}) </span>
                 <span *ngSwitchCase="'status'" class="error" [ngClass]="{'themeBlueClr':(element?.status =='SUBMITTED'),'success':(element?.status == 'APPROVED')}">{{element[column]}}</span>
                 <div *ngSwitchCase="'actions'">
-                  <button mat-raised-button color="warn" *ngIf="element?.status !='WITHDREW' " (click)="withdraw(element?.id)">Withdraw</button>
+                  <tr>
+                    <td>
+                      <button mat-mini-fab color="primary" (click)="view(element)" matTooltip="View"><span class="fas fa-eye"></span></button>
+                    </td>
+                    <td *ngIf="element?.status !='WITHDREW' && isAdminRelatedRole">
+                      <button mat-mini-fab color="primary" matTooltip="Edit" (click)="edit(element)"><span class="fas fa-pen"></span></button>
+                    </td>
+                    <td *ngIf="element?.user?.id == currentUser?.user?.id && element?.status !='WITHDREW' && element?.status !='DENIED'" >
+                      <button mat-mini-fab color="warn" (click)="withdraw(element?.id)"  matTooltip="Withdraw"><span class="fas fa-times"></span></button>
+                    </td>
+                  </tr>
                 </div>
                 <span *ngSwitchDefault>{{element[column]}}</span>
               </td>

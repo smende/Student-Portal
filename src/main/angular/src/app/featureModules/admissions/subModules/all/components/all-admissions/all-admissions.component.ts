@@ -36,18 +36,18 @@ export class AllAdmissionsComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.currentUserService.getCurrentUser_async().subscribe(currentUser =>{
+      this.currentUserService.getCurrentUser_async("allAdmissions").subscribe(currentUser =>{
         if(currentUser == null)
            return;
               
         this.currentUser = currentUser;
-            this.loadAllInTakes();
+            this.loadAllCoursesByInTakes();
             this.loadAdmissionApplications();
       })
 
   }
 
-  loadAllInTakes(){
+  loadAllCoursesByInTakes(){
     this.isLoading = true;
     this.allAdmissionsService.getCoursesByInTake().subscribe(resp =>{
       this.isLoading = false;
