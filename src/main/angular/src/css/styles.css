@@ -96,3 +96,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     letter-spacing: 0.3px;
     background-color: black;
 }
+.fullWidth{
+    width: 100% !important;
+}
+.ovrfl{
+overflow: auto !important;
+}

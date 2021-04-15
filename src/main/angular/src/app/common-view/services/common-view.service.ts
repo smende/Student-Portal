@@ -5,12 +5,12 @@ import { MenuItem } from '../../models/menu-item';
 export class CommonViewService {
 
   private applicantMenu : MenuItem[] =[
-    {label:"Admissions",url:"admissions/all"},
-    {label:"My Applications",url:"admissions/applications"}    
+    {label:"Admissions",url:"admissions"},
+    {label:"My Applications",url:"applications"}    
   ]
   private superUserMenu : MenuItem[] =[
-    {label:"Admissions",url:"admissions/all"},
-    {label:"Applications",url:"admissions/applications"}    
+    {label:"Admissions",url:"admissions"},
+    {label:"Applications",url:"applications"}    
   ]
 
   private menu = {

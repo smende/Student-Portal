@@ -8,7 +8,8 @@
   }
 .mainRouterContent{
   height: calc(100vh - 50px);
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding-bottom: 50px;
 }
 .sidenav{

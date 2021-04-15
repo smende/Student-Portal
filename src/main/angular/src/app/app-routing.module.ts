@@ -6,7 +6,12 @@ const routes: CustomRoutes = [
   {
     path:"admissions",
     loadChildren: ()=> import("./featureModules/admissions/admissions.module").then(mod => mod.AdmissionsModule),
-    data:{title:"Apply",standAlone:false}
+    data:{standAlone:false}
+  },
+  {
+    path:"applications",
+    loadChildren: ()=> import("./featureModules/applications/applications.module").then(mod => mod.ApplicationsModule),
+    data:{standAlone:false}
   }
 ];
 
