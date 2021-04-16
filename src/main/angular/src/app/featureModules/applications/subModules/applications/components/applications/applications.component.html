@@ -6,7 +6,7 @@
 <div class="card center wfc mat-elevation-z8 fullWidth">
   <app-loader [isLoading]="isLoading"></app-loader>
     <div class="ovrfl">
-        <table mat-table [dataSource]="dataSource" class="tbl">
+        <table mat-table [dataSource]="dataSource" class="fullWidth table-hover">
             <ng-container *ngFor="let column of displayedColumns"  [matColumnDef]="column">
               <th mat-header-cell *matHeaderCellDef> {{keyValues[column]?.label}} </th>
               <td mat-cell *matCellDef="let element" [ngSwitch]="column"> 

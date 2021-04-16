@@ -11,7 +11,7 @@
         <h4>Check your internet connection <span class="fas fa-wifi"></span></h4> 
     </div>
 
-    <div class="routerOutlet" *ngIf="!isUserLoading && !currentUser?.isError">       
+    <div class="ro" *ngIf="!isUserLoading && !currentUser?.isError">       
       <router-outlet (activate)="onRouteChange()" ></router-outlet>
     </div>
   </div>

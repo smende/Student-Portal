@@ -1,6 +1,6 @@
 <div>
     <mat-selection-list [multiple]="false">
-        <mat-list-option *ngFor="let item of menu" [routerLink]="item?.url" [routerLinkActive]="'active'" (click)="onClick()">
+        <mat-list-option *ngFor="let item of menu" [routerLink]="item?.url" [routerLinkActive]="'active mat-list-single-selected-option'" (click)="onClick()">
           {{item?.label}}
         </mat-list-option>
     </mat-selection-list>

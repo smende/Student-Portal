@@ -1,4 +1,6 @@
 th.mat-header-cell{
-    background-color: #802929;
-    color: white;
+    /* background-color: #802929;
+    color: white; */
+    font-weight: bold;
+    color: #5a5a5a;
 }

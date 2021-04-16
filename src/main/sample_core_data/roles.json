@@ -1,30 +1,30 @@
 [
     {
-        "name": "Developers",
-        "details": "Super User"
+        "name": "ROLE_Super_User",
+        "details": "Developers"
     },
     {
-        "name": "Head of the school",
-        "details": "Principal"
+        "name": "ROLE_Principal",
+        "details": "Head of the school"
     },
     {
-        "name": "Head of the Department",
+        "name": "ROLE_HOD",
         "details": "HOD"
     },
     {
-        "name": "Teacher",
+        "name": "ROLE_Faculty",
         "details": "Faculty"
     },
     {
-        "name": "Administratin team",
-        "details": "Admin Staff"
+        "name": "ROLE_Management",
+        "details": "Management Team"
     },
     {
-        "name": "Active academic student",
-        "details": "Student"
+        "name": "ROLE_Student",
+        "details": "Active academic student"
     },
     {
-        "name": "waiting for approval",
-        "details": "Applicant"
+        "name": "ROLE_Applicant",
+        "details": "waiting for approval"
     }
 ]
