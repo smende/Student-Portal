@@ -45,5 +45,16 @@ public class User extends GenericDomain{
 	
 	private String email;
 	private String cell;
-	
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", userName='" + userName + '\'' +
+				", email='" + email + '\'' +
+				", cell='" + cell + '\'' +
+				'}';
+	}
 }

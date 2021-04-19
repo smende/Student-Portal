@@ -52,4 +52,14 @@ public class Application extends GenericDomain{
 	
 	private ApplicationStatus status = ApplicationStatus.SUBMITTED;
 
-}	
+	@Override
+	public String toString() {
+		return "Application{" +
+				"id=" + id +
+				", user=" + user +
+				", courseByInTake=" + courseByInTake +
+				", notes='" + notes + '\'' +
+				", status=" + status +
+				'}';
+	}
+}
