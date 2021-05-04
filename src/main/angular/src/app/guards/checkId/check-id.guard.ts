@@ -24,7 +24,7 @@ export class CheckIdGuard implements CanActivateChild, CanLoad {
     let result = false;
     if(this.router.getCurrentNavigation().extras && 
       this.router.getCurrentNavigation().extras.state && 
-      (this.router.getCurrentNavigation().extras.state["item"] as GenericFields).id != null)
+      (this.router.getCurrentNavigation().extras.state["hasData"] as boolean) == true)
         result = true;
     return result;
   }

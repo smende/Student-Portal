@@ -11,6 +11,7 @@
 	<groupId>com.msd</groupId>
 	<artifactId>Student_Portal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>com.msd.portal</name>
 	<description>School portal project</description>
 	<properties>

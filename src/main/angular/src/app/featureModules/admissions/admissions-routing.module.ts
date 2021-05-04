@@ -12,13 +12,6 @@ const routes: CustomRoutes = [
         path:"",
         loadChildren: () => import("./subModules/all/all.module").then(mod => mod.AllModule),
         data:{module:"admissionsAll"}
-      },
-      {
-        path:"apply",
-        loadChildren: () => import("./subModules/apply-admission/apply-admission.module").then(mod => mod.ApplyAdmissionModule),
-        canLoad:[CheckIdGuard],
-        canActivateChild:[CheckIdGuard],
-        data:{module:"admissionApply"}
       }
     ]
   }

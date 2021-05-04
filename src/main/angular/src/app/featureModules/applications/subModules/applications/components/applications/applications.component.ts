@@ -95,7 +95,7 @@ withdraw(applicationId:number){
 }
 
 view(application:AdmissionApplication){
-  this.router.navigateByUrl("/admissions/apply",{state:{item:application.courseByInTake}});
+  this.router.navigateByUrl("/applications/view/"+application.id,{state:{hasData:true,item:application.courseByInTake, admissionApplication:application}});
 }
 
 edit(application:AdmissionApplication){
