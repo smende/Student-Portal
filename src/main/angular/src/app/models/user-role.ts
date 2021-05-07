@@ -6,8 +6,9 @@ export interface UserRole extends GenericFields{
     user ?: User;
     role ?: Role;
     currentRole ?: boolean;
-
-    isError ?: boolean;
 }
 
-export declare type CurrentUser = UserRole;
+export interface CurrentUser extends UserRole{
+    isError ?: boolean;
+    env ?: string;
+}

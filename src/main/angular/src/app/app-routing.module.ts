@@ -12,6 +12,11 @@ const routes: CustomRoutes = [
     path:"applications",
     loadChildren: ()=> import("./featureModules/applications/applications.module").then(mod => mod.ApplicationsModule),
     data:{standAlone:false}
+  },
+  {
+    path:"",
+    redirectTo:"admissions",
+    pathMatch:"full"
   }
 ];
 
