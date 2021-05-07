@@ -1,5 +1,6 @@
 package com.msd.portal.web.api;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,8 +61,8 @@ public class UserRoleController {
 	}
 	
 	@GetMapping("/current")
-	public UserRole getCurrentUserRole(){
-		return userRoleService.getCurrentUserRole();
+	public UserRole getCurrentUserRole(Principal principal){
+		return userRoleService.getCurrentUserRole(principal);
 	}
 	
 }

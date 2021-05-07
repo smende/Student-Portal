@@ -10,10 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.msd.portal.domain.Application;
+import com.msd.portal.domain.User;
 import com.msd.portal.enumtypes.ApplicationStatus;
 import com.msd.portal.repositories.ApplicationRepository;
 import com.msd.portal.service.ApplicationService;
-import com.msd.portal.service.UserService;
 import com.msd.portal.util.CommonUtil;
 
 /**
@@ -28,8 +28,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Autowired
 	private ApplicationRepository applicationRepo;
 
-	@Autowired
-	private UserService userService;
 
 	@Override
 	public List<Application> getAll() {
@@ -116,7 +114,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 	
 	@Override
-	public ResponseEntity<Object> withdrawOwnApplication(Application application) {
+	public ResponseEntity<Object> withdrawOwnApplication(Application application, User currentUser) {
 
 		Optional<Application> optApplication;
 		
@@ -137,7 +135,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 			String str= "{\"message\" : \"Application :"+application.getId()+" is already withdrawn\" }";
 			return new ResponseEntity<Object>(str,HttpStatus.NOT_IMPLEMENTED);
 		}		
-		else if(optApplication.get().getUser().getId() != userService.getCurrentUser().getId()) {
+		else if(optApplication.get().getUser().getId() != currentUser.getId()) {
 			String str= "{\"message\": \"Current user can not modify this Application record :" +application.getId()+"\"}";
 			return new ResponseEntity<Object>(str,HttpStatus.FORBIDDEN);
 		}

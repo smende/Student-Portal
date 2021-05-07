@@ -1,5 +1,6 @@
 package com.msd.portal.web.api;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,13 +66,18 @@ public class UserController {
 	}
 	
 	@GetMapping("/current")
-	public User getCurrentUser() {
-		return userService.getCurrentUser();
+	public User getCurrentUser(Principal principal) {
+		return userService.getCurrentUser(principal);
 	}
 	
 	@GetMapping("/createdby/{createdByUserName}")
 	public List<User> getCurrentUser(@PathVariable String createdByUserName) {
 		return userService.getUsersByCreatedByUserName(createdByUserName);
+	}
+	
+	@GetMapping("/principal")
+	public Principal getPrincipal(Principal principal) {
+		return principal;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.msd.portal.service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,6 @@ public interface UserService {
 	public List<User> getUsersByCreatedByUserName(String userName);
 	public void deleteUserById (long id);
 	public User updateUser(long id, User user);
-	public User getCurrentUser();
+	public User getCurrentUser(Principal principal);
 	public Optional<User> getUserByUserName(String userName);
 }

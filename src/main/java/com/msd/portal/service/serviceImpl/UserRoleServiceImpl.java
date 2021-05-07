@@ -67,9 +67,9 @@ public class UserRoleServiceImpl implements UserRoleService{
 	}
 	
 	@Override
-	public UserRole getCurrentUserRole() {		
-		long localUserId = Long.parseLong(env.getProperty("app.localUserId"));	
-		List<UserRole> listOfUserRolesWithCurrentRoleIsTrue = userRoleRepository.findByUserIdAndIsCurrentRoleTrue(localUserId);
+	public UserRole getCurrentUserRole(Principal principal) {		
+
+		List<UserRole> listOfUserRolesWithCurrentRoleIsTrue = userRoleRepository.findByUserUserNameAndIsCurrentRoleTrue(principal.getName());
 		int size = listOfUserRolesWithCurrentRoleIsTrue.size();
 		
 		if(size == 0)
@@ -77,7 +77,7 @@ public class UserRoleServiceImpl implements UserRoleService{
 		else
 		{
 			if(size >1)
-				log.error("Current userID: "+localUserId+" has multiple user roles with flag currentRole as true");
+				log.error("Current userName: "+principal.getName()+" has multiple user roles with flag currentRole as true");
 			
 			return listOfUserRolesWithCurrentRoleIsTrue.get(0);
 		}

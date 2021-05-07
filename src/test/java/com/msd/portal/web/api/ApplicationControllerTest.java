@@ -7,12 +7,14 @@ import com.msd.portal.domain.CourseByInTake;
 import com.msd.portal.domain.User;
 import com.msd.portal.enumtypes.ApplicationStatus;
 import com.msd.portal.service.ApplicationService;
+import com.msd.portal.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.security.Principal;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -26,6 +28,9 @@ class ApplicationControllerTest {
 
     @Autowired
     private ApplicationService applicationService;
+    
+    @Autowired
+    private UserService userService;
 
     List<Application> applicationList = new ArrayList<>();
 
@@ -141,11 +146,11 @@ class ApplicationControllerTest {
     }
 
     @Test
-    void withdrawApplication() {
+    void withdrawApplication(Principal principal) {
         Instant startTime = Instant.now();
         Application application = new Application();
         //todo Application object need to build
-        applicationService.withdrawOwnApplication(application);
+        applicationService.withdrawOwnApplication(application,userService.getCurrentUser(principal));
         finalMethod(startTime, Instant.now());
     }
 }

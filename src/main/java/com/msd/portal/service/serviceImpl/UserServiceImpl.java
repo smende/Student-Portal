@@ -1,5 +1,6 @@
 package com.msd.portal.service.serviceImpl;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,9 +69,8 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public User getCurrentUser() {
-		long localUserId = Long.parseLong(env.getProperty("app.localUserId"));				
-		return getUserById(localUserId).get();
+	public User getCurrentUser(Principal principal) {			
+		return getUserByUserName(principal.getName()).get();
 	}
 	
 	@Override
@@ -79,9 +79,9 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-		public Optional<User> getUserByUserName(String userName) {
-			return null;
-		}
+	public Optional<User> getUserByUserName(String userName) {
+		return userRepository.findByUserNameAndActiveTrue(userName);
+	}
 	
 	private String createUniqueUserName(User user) throws Exception {
 		

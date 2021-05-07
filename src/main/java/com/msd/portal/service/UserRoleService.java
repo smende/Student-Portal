@@ -20,5 +20,5 @@ public interface UserRoleService {
 	public UserRole addNewUserRole(UserRole userRole);
 	public UserRole updateUserRole(long id,UserRole userRole);
 	public void deleteUserRoleById(long id);
-	public UserRole getCurrentUserRole();
+	public UserRole getCurrentUserRole(Principal principal);
 }

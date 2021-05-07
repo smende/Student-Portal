@@ -1,5 +1,6 @@
 package com.msd.portal.web.api;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.msd.portal.domain.Application;
+import com.msd.portal.domain.User;
 import com.msd.portal.enumtypes.ApplicationStatus;
 import com.msd.portal.service.ApplicationService;
+import com.msd.portal.service.UserService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -33,6 +36,9 @@ public class ApplicationController {
 
 	@Autowired
 	private ApplicationService applicationService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping("")
 	public List<Application> getAll(){
@@ -100,7 +106,7 @@ public class ApplicationController {
 	}
 	
 	@PutMapping("/withdraw")
-	public ResponseEntity<Object> withdrawApplication(@RequestBody Application application){
-		return this.applicationService.withdrawOwnApplication(application);
+	public ResponseEntity<Object> withdrawApplication(@RequestBody Application application,Principal principal){
+		return this.applicationService.withdrawOwnApplication(application,userService.getCurrentUser(principal));
 	}
 }

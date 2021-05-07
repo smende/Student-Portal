@@ -21,4 +21,6 @@ public interface UserRoleRepository extends CrudRepository<UserRole, Long>{
 	
 	public List<UserRole> findByUserIdAndIsCurrentRoleTrue(long userId);
 	
+	public List<UserRole> findByUserUserNameAndIsCurrentRoleTrue(String userName);
+	
 }

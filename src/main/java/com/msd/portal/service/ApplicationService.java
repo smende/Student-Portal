@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 
 import com.msd.portal.domain.Application;
+import com.msd.portal.domain.User;
 import com.msd.portal.enumtypes.ApplicationStatus;
 
 /**
@@ -26,5 +27,5 @@ public interface ApplicationService {
 	public Application addNew(Application application);
 	public Application updateById(long id, Application application);
 	public void deleteById(long id);
-	public ResponseEntity<Object> withdrawOwnApplication(Application application);
+	public ResponseEntity<Object> withdrawOwnApplication(Application application, User currentUser);
 }
