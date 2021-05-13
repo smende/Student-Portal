@@ -21,7 +21,7 @@
     <div class="spacer"></div>  
     <section>
         <div class="buttonRow">
-          <label class="bold">{{currentUser?.role?.name}}</label>
+          <label class="bold">@{{currentUser?.role?.name | roleView}}</label>
           <button mat-button *ngFor="let opt of menu" [routerLink]="opt?.url">{{opt?.label}}</button>
         </div>
     </section>

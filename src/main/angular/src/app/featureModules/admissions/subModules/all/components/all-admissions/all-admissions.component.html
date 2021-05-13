@@ -2,7 +2,7 @@
     <h2>Admissions</h2>
 </div>
 <app-loader [isLoading]="isLoading"></app-loader>
-<div class="card inTakes boxShadow grow" *ngIf="!isLoading">
+<div class="card inTakes grow" *ngIf="!isLoading">
         <mat-accordion>
           <mat-expansion-panel *ngFor="let eachRecord of records">
             <mat-expansion-panel-header class="ph">

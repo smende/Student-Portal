@@ -9,8 +9,7 @@ import { ApplyAdmissionComponent } from './components/apply-admission/apply-admi
 let routes:CustomRoutes = [
   {
     path:"",
-    component:ApplyAdmissionComponent,
-    data:{title:"Apply Admission"}
+    component:ApplyAdmissionComponent
   }
 ] 
 

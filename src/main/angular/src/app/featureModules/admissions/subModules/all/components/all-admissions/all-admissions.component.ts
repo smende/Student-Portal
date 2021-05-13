@@ -68,7 +68,7 @@ export class AllAdmissionsComponent implements OnInit {
     if(this.admissionApplicationsMap.has(directData.id))
     return;
 
-    this.router.navigateByUrl("/admissions/apply",{state:{"item" : directData}});
+    this.router.navigateByUrl("/applications/apply",{state:{hasData:true,"item" : directData}});
   }
 
   loadAdmissionApplications(){

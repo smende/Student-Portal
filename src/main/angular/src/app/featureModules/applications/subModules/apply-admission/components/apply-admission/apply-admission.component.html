@@ -1,7 +1,7 @@
 <div class="card-body centerAlign">
-    <h2>Apply</h2>
+    <h2>{{title}}</h2>
 </div>
-<mat-card class="applyDiv center grow boxShadow">
+<mat-card class="applyDiv center grow">
   <mat-card-header class="themeBlueClr">
     <mat-card-title>{{selectedCourseByInTake?.course?.name}}</mat-card-title>
     <mat-card-subtitle><b>{{selectedCourseByInTake?.inTake?.name}}</b></mat-card-subtitle>
@@ -23,7 +23,7 @@
     </div>
 
   </mat-card-content>
-  <mat-card-actions class="centerAlign"  *ngIf="canApply;else alreadyAppliedBlock">
+  <mat-card-actions class="centerAlign"  *ngIf="admissionApplication==null && canApply;else alreadyAppliedBlock">
     <label *ngIf="!isLoading && isSubmitted && isError" class="error lightBold">Something went wrong, try again!  <span class="fas fa-exclamation"></span> <br></label>
     <button *ngIf="isError == true || !isSubmitted" [disabled]="isLoading" mat-raised-button color="primary" (click)="continueToApply()">
       <span *ngIf="!isLoading">Apply</span>
@@ -32,6 +32,11 @@
     <label *ngIf="!isLoading && isSubmitted && !isError" class="success lightBold">Submitted <span class="fas fa-check"></span></label>
   </mat-card-actions>
   <ng-template #alreadyAppliedBlock>
-    <label>You have already applied to this course in this intake.</label>
+      <label *ngIf="admissionApplication == null;else applicationStatusBlock">You have already applied to this course in this intake.</label>
+      
+      <ng-template #applicationStatusBlock>
+        <label>Statue : {{admissionApplication?.status}}</label> 
+      </ng-template>
+
   </ng-template>
 </mat-card>
