@@ -34,3 +34,4 @@ build/
 **/webapp/*
 **/node/*
 **/node_modules/*
+**/resources/static/*
