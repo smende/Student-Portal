@@ -32,3 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 **/webapp/*
+**/node/*
+**/node_modules/*
+**/static/*
